@@ -1,0 +1,78 @@
+﻿ </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 用户画像模块 -->
+        <section class="profile-section">
+            <h2>个性化设置</h2>
+            <div class="tag-cloud">
+                <span class="tag" onclick="toggleTag(this)">20-30岁</span>
+                <span class="tag" onclick="toggleTag(this)">白领</span>
+                <span class="tag" onclick="toggleTag(this)">摄影爱好者</span>
+                <span class="tag" onclick="toggleTag(this)">历史人文</span>
+                <span class="tag" onclick="toggleTag(this)">月均消费5000+</span>
+            </div>
+        </section>
+
+        <!-- 智能推荐模块 -->
+        <section>
+            <h3>为您量身定制的路线推荐</h3>
+            <div class="recommendation-card">
+                < img src="qdlx1.jpg" alt="文化之旅" style="width:100px;border-radius:8px;">
+                <div>
+                    <div class="route-badge">历史人文路线 ★★★★☆</div>
+                    <h4>青岛文化探索一日游</h4>
+                    <p>栈桥 → 德国总督楼 → 八大关 → 啤酒博物馆</p >
+                    <p>💡 根据您的职业(白领)和兴趣(历史)推荐</p >
+                </div>
+            </div>
+
+            <div class="recommendation-card">
+                < img src="qdlx2.jpg" alt="滨海休闲" style="width:100px;border-radius:8px;">
+                <div>
+                    <div class="route-badge">滨海休闲路线 ★★★★★</div>
+                    <h4>浪漫海岸线两日游</h4>
+                    <p>金沙滩 → 崂山风景区 → 奥帆中心夜景</p >
+                    <p>💡 根据您的年龄(25岁)和收入(5000+)推荐</p >
+                </div>
+            </div>
+        </section>
+
+        <!-- 路线筛选器 -->
+        <section class="profile-section">
+            <h4>智能筛选</h4>
+            <div class="tag-cloud">
+                <span class="tag" onclick="filterRoutes('family')">亲子游</span>
+                <span class="tag" onclick="filterRoutes('couple')">情侣游</span>
+                <span class="tag" onclick="filterRoutes('photo')">摄影路线</span>
+                <span class="tag" onclick="filterRoutes('food')">美食地图</span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 标签选择逻辑
+        function toggleTag(element) {
+            element.classList.toggle('active');
+            updateRecommendations();
+        }
+
+        // 实时推荐更新
+        function updateRecommendations() {
+            const selectedTags = Array.from(document.querySelectorAll('.tag.active'))
+                                .map(tag => tag.innerText);
+            
+            // 此处应接入推荐算法API
+            console.log('当前选择标签:', selectedTags);
+        }
+
+        // 路线筛选
+        function filterRoutes(type) {
+            const routes = document.querySelectorAll('.recommendation-card');
+            routes.forEach(route => {
+                route.style.display = route.dataset.type === type ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
